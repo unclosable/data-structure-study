@@ -1,13 +1,6 @@
 package linear_structure
 
-import "fmt"
-
 type ArrayElement struct {
-	value interface{}
-}
-
-func (e ArrayElement) PrintValue() {
-	fmt.Println(e.value)
 }
 
 type ArrayList struct {
@@ -15,15 +8,11 @@ type ArrayList struct {
 	index int
 }
 
-func (a ArrayList) PrintList() {
-	fmt.Println(a.datas)
-}
-
 type ArrayListRealization struct {
 	// golang's interface is sucks
 }
 
-func (a ArrayListRealization) MakeEmpty() List {
+func (a ArrayListRealization) MakeEmpty() ArrayList {
 	return ArrayList{index: -1, datas: make([]*ArrayElement, 10)}
 }
 
@@ -50,7 +39,7 @@ func (a ArrayListRealization) Insert(e *ArrayElement, i int, l ArrayList) {
 		return
 	}
 	if i < 1 || i > l.index+2 {
-		//index illegal
+		//i illegal
 		return
 	}
 	for j := l.index; j >= i-1; j-- {
